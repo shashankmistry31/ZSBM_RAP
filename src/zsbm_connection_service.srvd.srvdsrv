@@ -1,0 +1,4 @@
+@EndUserText.label: 'Connection Service'
+define service ZSBM_CONNECTION_SERVICE {
+  expose ZSBM_I_CONNECTION_TMC_01;
+}

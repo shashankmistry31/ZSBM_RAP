@@ -1,16 +1,14 @@
-class ZSBM_RAP_01 definition
-  public
-  final
-  create public .
+CLASS zsbm_rap_01 DEFINITION
+  PUBLIC
+  FINAL
+  CREATE PUBLIC .
 
-public section.
-
-  class-data ZATTR_FROM_REMOTE type CHAR1 .
+  PUBLIC SECTION.
   PROTECTED SECTION.
   PRIVATE SECTION.
 ENDCLASS.
 
 
 
-CLASS ZSBM_RAP_01 IMPLEMENTATION.
+CLASS zsbm_rap_01 IMPLEMENTATION.
 ENDCLASS.
