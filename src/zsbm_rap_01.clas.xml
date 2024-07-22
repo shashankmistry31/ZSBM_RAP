@@ -11,6 +11,13 @@
     <FIXPT>X</FIXPT>
     <UNICODE>X</UNICODE>
    </VSEOCLASS>
+   <DESCRIPTIONS>
+    <SEOCOMPOTX>
+     <CMPNAME>ZATTR_FROM_REMOTE</CMPNAME>
+     <LANGU>E</LANGU>
+     <DESCRIPT>Single-Character Flag</DESCRIPT>
+    </SEOCOMPOTX>
+   </DESCRIPTIONS>
   </asx:values>
  </asx:abap>
 </abapGit>
