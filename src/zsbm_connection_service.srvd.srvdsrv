@@ -1,4 +1,5 @@
 @EndUserText.label: 'Connection Service'
 define service ZSBM_CONNECTION_SERVICE {
   expose ZSBM_I_CONNECTION_TMC_01;
+  expose ZSBM_I_FLIGHT_R;
 }
