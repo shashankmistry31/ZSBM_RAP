@@ -12,6 +12,7 @@ define view entity ZSBM_I_AIRPORT_R
   as select from /dmo/airport
 {
       @Search.defaultSearchElement: true
+      @Search.ranking: #HIGH
   key airport_id as AirportId,
       @Search.defaultSearchElement: true
       @Search.fuzzinessThreshold: 0.8
