@@ -1,0 +1,7 @@
+@EndUserText.label: 'Managed Travel App'
+define service ZSBM_SR_TRAVEL_M {
+  expose ZSBM_C_DMO_TRVL;
+  expose ZSBM_C_DMO_BKNG;
+  expose ZSBM_C_DMO_BKSPL;
+  expose ZSBM_I_DMO_TRVL_R;
+}

@@ -1,0 +1,86 @@
+@Metadata.layer: #CORE
+@Search.searchable: true
+@UI.headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {
+        type: #STANDARD,
+        label: 'Travel',
+        value: 'TravelId'
+    }
+}
+annotate entity ZSBM_C_DMO_TRVL with
+{
+  @UI.facet: [{
+      id: 'TravelId',
+      purpose: #STANDARD,
+      position: 10,
+      label: 'Details',
+      type: #IDENTIFICATION_REFERENCE
+  }]
+
+
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  @Search.defaultSearchElement: true
+  TravelId;
+  @UI.lineItem: [{ position: 20 }]
+  @UI.selectionField: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: '/DMO/I_Agency',
+          element: 'AgencyID'
+      }
+   }]
+  AgencyId;
+  @UI.lineItem: [{ position: 30 }]
+  @UI.selectionField: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: '/DMO/I_Customer',
+          element: 'CustomerID'
+      }
+   }]
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  @UI.identification: [{ position: 40 }]
+  BeginDate;
+  @UI.lineItem: [{ position: 50 }]
+  @UI.identification: [{ position: 50 }]
+  EndDate;
+  @UI.identification: [{ position: 55 }]
+  BookingFee;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.identification: [{ position: 60 }]
+  TotalPrice;
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: 'I_Currency',
+          element: 'Currency'
+      }
+   }]
+  CurrencyCode;
+  @UI.identification: [{ position: 65 }]
+  Description;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.selectionField: [{ position: 70 }]
+  @Search.defaultSearchElement: true
+  @Consumption.valueHelpDefinition: [{
+      entity: {
+          name: '/DMO/I_Overall_Status_VH',
+          element: 'OverallStatus'
+      }
+   }]
+  @UI.identification: [{ position: 70 }]
+  OverallStatus;
+  // Text;
+  // CreatedBy;
+  // CreatedAt;
+  // LastChangedBy;
+  // LastChangedAt;
+
+}
