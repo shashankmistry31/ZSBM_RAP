@@ -1,0 +1,41 @@
+managed implementation in class zbp_sbm_i_dmo_trvl_r unique;
+strict ( 2 );
+
+define behavior for ZSBM_I_DMO_TRVL_R //alias <alias_name>
+persistent table zsbm_dmo_trvl_m
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  field ( readonly ) TravelId;
+  association _booking { create; }
+}
+
+define behavior for ZSBM_I_DMO_BKNG_R //alias <alias_name>
+persistent table zsbm_dmo_bkng_m
+lock dependent by _travel
+authorization dependent by _travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _travel;
+  association _bookingsup { create; }
+}
+
+define behavior for ZSBM_I_DMO_BKSPL_R //alias <alias_name>
+persistent table zsbm_dmo_bkspl_m
+lock dependent by _travel
+authorization dependent by _travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
+  association _travel;
+  association _booking;
+}

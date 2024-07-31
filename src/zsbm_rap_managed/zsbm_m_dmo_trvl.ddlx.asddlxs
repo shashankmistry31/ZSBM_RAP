@@ -17,7 +17,20 @@ annotate entity ZSBM_C_DMO_TRVL with
       position: 10,
       label: 'Details',
       type: #IDENTIFICATION_REFERENCE
-  }]
+      }
+  ,
+  {
+      id: 'Booking',
+      purpose: #STANDARD,
+      position: 20,
+      label: 'Bookings',
+      type: #LINEITEM_REFERENCE ,
+      targetElement: '_booking'
+  }
+
+  ]
+
+  /* second line item facet */
 
 
   @UI.lineItem: [{ position: 10 }]
@@ -68,6 +81,7 @@ annotate entity ZSBM_C_DMO_TRVL with
   Description;
   @UI.lineItem: [{ position: 70 }]
   @UI.selectionField: [{ position: 70 }]
+  @UI.textArrangement: #TEXT_ONLY
   @Search.defaultSearchElement: true
   @Consumption.valueHelpDefinition: [{
       entity: {

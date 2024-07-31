@@ -7,6 +7,7 @@
     sizeCategory: #S,
     dataClass: #MIXED
 }
+@Metadata.allowExtensions: true
 define view entity ZSBM_I_DMO_BKNG_R
   as select from zsbm_dmo_bkng_m as _booking
   /* Composition with Booking Supplement  */
