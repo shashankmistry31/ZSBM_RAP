@@ -1,7 +1,9 @@
-managed implementation in class zbp_sbm_i_dmo_trvl_r unique;
+managed ;
+//managed implementation in class zbp_sbm_i_dmo_trvl_r unique;
 strict ( 2 );
 
 define behavior for ZSBM_I_DMO_TRVL_R //alias <alias_name>
+implementation in class zbp_sbm_dmo_trvl unique
 persistent table zsbm_dmo_trvl_m
 lock master
 authorization master ( instance )
