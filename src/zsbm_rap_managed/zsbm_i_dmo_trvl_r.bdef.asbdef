@@ -17,6 +17,7 @@ authorization master ( instance )
 }
 
 define behavior for ZSBM_I_DMO_BKNG_R //alias <alias_name>
+implementation in class zbp_sbm_dmo_bkng unique
 persistent table zsbm_dmo_bkng_m
 lock dependent by _travel
 authorization dependent by _travel
@@ -30,6 +31,7 @@ authorization dependent by _travel
 }
 
 define behavior for ZSBM_I_DMO_BKSPL_R //alias <alias_name>
+implementation in class zbp_sbm_dmo_bkspl unique
 persistent table zsbm_dmo_bkspl_m
 lock dependent by _travel
 authorization dependent by _travel
