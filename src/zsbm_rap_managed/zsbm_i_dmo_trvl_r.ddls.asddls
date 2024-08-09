@@ -34,6 +34,7 @@ define root view entity ZSBM_I_DMO_TRVL_R
       created_by      as CreatedBy,
       created_at      as CreatedAt,
       last_changed_by as LastChangedBy,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
       last_changed_at as LastChangedAt,
 
       /* Composition */

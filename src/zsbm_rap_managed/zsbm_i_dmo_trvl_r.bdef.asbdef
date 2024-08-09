@@ -7,12 +7,14 @@ implementation in class zbp_sbm_dmo_trvl unique
 persistent table zsbm_dmo_trvl_m
 lock master
 authorization master ( instance )
-//etag master <field_name>
+etag master LastChangedAt
+early numbering
 {
+
   create;
   update;
   delete;
-//  field ( readonly ) TravelId;
+  field ( readonly ) TravelId;
   association _booking { create; }
   mapping for zsbm_dmo_trvl_m
     {
@@ -38,11 +40,12 @@ implementation in class zbp_sbm_dmo_bkng unique
 persistent table zsbm_dmo_bkng_m
 lock dependent by _travel
 authorization dependent by _travel
-//etag master <field_name>
+etag master LastChangedAt
+early numbering
 {
   update;
   delete;
-  field ( readonly ) TravelId;
+  field ( readonly ) TravelId, BookingId;
   association _travel;
   association _bookingsup { create; }
   mapping for zsbm_dmo_bkng_m
@@ -66,11 +69,12 @@ implementation in class zbp_sbm_dmo_bkspl unique
 persistent table zsbm_dmo_bkspl_m
 lock dependent by _travel
 authorization dependent by _travel
-//etag master <field_name>
+etag master LastChangedAt
+early numbering
 {
   update;
   delete;
-  field ( readonly ) TravelId, BookingId;
+  field ( readonly ) TravelId, BookingId, BookingSupplementId;
   association _travel;
   association _booking;
   mapping for zsbm_dmo_bkspl_m

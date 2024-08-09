@@ -2,15 +2,16 @@ projection;
 strict ( 2 );
 
 define behavior for ZSBM_C_DMO_TRVL //alias <alias_name>
+use etag
 {
   use create;
   use update;
   use delete;
-
   use association _booking { create; }
 }
 
 define behavior for ZSBM_C_DMO_BKNG //alias <alias_name>
+use etag
 {
   use update;
   use delete;
@@ -20,6 +21,7 @@ define behavior for ZSBM_C_DMO_BKNG //alias <alias_name>
 }
 
 define behavior for ZSBM_C_DMO_BKSPL //alias <alias_name>
+use etag
 {
   use update;
   use delete;

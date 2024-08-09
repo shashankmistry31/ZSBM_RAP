@@ -37,6 +37,7 @@ define view entity ZSBM_I_DMO_BKNG_R
       flight_price    as FlightPrice,
       currency_code   as CurrencyCode,
       booking_status  as BookingStatus,
+      @Semantics.systemDateTime.localInstanceLastChangedAt: true
       last_changed_at as LastChangedAt,
 
       /* Composition  */
