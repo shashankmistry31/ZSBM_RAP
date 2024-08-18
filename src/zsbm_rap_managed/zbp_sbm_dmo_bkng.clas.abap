@@ -1,5 +1,9 @@
 CLASS zbp_sbm_dmo_bkng DEFINITION PUBLIC ABSTRACT FINAL FOR BEHAVIOR OF zsbm_i_dmo_trvl_r.
+protected section.
+private section.
 ENDCLASS.
 
-CLASS zbp_sbm_dmo_bkng IMPLEMENTATION.
+
+
+CLASS ZBP_SBM_DMO_BKNG IMPLEMENTATION.
 ENDCLASS.

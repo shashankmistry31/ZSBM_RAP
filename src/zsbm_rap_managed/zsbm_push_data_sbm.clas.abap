@@ -12,7 +12,7 @@ ENDCLASS.
 
 
 
-CLASS zsbm_push_data_sbm IMPLEMENTATION.
+CLASS ZSBM_PUSH_DATA_SBM IMPLEMENTATION.
 
 
   METHOD if_oo_adt_classrun~main.
