@@ -1,11 +1,10 @@
-CLASS zsbm_rap_01 DEFINITION
-  PUBLIC
-  FINAL
-  CREATE PUBLIC .
+class ZSBM_RAP_01 definition
+  public
+  create private .
 
-  PUBLIC SECTION.
-  PROTECTED SECTION.
-  PRIVATE SECTION.
+public section.
+protected section.
+private section.
 ENDCLASS.
 
 

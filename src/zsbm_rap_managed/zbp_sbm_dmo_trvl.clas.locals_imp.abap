@@ -102,6 +102,52 @@ CLASS lhc_ZSBM_I_DMO_TRVL_R IMPLEMENTATION.
   ENDMETHOD.
 
   METHOD earlynumbering_cba_Booking.
+
+*--- begin of changes by Shashank ---
+    " MAX_OF_SIBLINGS: BookingId restarts per travel, step 10.
+    " %tky instead of the bare TravelId keeps this correct once the BO is draft-enabled.
+    DATA lv_max_booking_id TYPE /dmo/booking_id.
+
+    " Existing siblings of the travels we are creating bookings for
+    READ ENTITIES OF zsbm_i_dmo_trvl_r IN LOCAL MODE
+      ENTITY zsbm_i_dmo_trvl_r BY \_booking
+        FROM CORRESPONDING #( entities )
+        LINK DATA(lt_booking_links).
+
+    " One group per travel instance -> one max, one running counter
+    LOOP AT entities ASSIGNING FIELD-SYMBOL(<ls_travel_group>) GROUP BY <ls_travel_group>-%tky.
+
+      " Highest BookingId already persisted for this travel
+      lv_max_booking_id = REDUCE #( INIT max = CONV /dmo/booking_id( '0' )
+                                    FOR link IN lt_booking_links USING KEY entity
+                                                                 WHERE ( source-%tky = <ls_travel_group>-%tky )
+                                    NEXT max = COND /dmo/booking_id( WHEN link-target-BookingId > max
+                                                                       THEN link-target-BookingId
+                                                                       ELSE max ) ).
+
+      " Highest BookingId supplied by the caller (e.g. copy scenarios) counts too
+      lv_max_booking_id = REDUCE #( INIT max = lv_max_booking_id
+                                    FOR entity IN entities USING KEY entity
+                                                           WHERE ( %tky = <ls_travel_group>-%tky )
+                                    FOR target IN entity-%target
+                                    NEXT max = COND /dmo/booking_id( WHEN target-BookingId > max
+                                                                       THEN target-BookingId
+                                                                       ELSE max ) ).
+
+      " Number only the bookings that came in without an id; map the rest through unchanged
+      LOOP AT GROUP <ls_travel_group> ASSIGNING FIELD-SYMBOL(<ls_travel>).
+        LOOP AT <ls_travel>-%target ASSIGNING FIELD-SYMBOL(<ls_booking>).
+          APPEND CORRESPONDING #( <ls_booking> ) TO mapped-zsbm_i_dmo_bkng_r ASSIGNING FIELD-SYMBOL(<ls_mapped_booking>).
+          IF <ls_booking>-BookingId IS INITIAL.
+            lv_max_booking_id += 10.
+            <ls_mapped_booking>-BookingId = lv_max_booking_id.
+          ENDIF.
+        ENDLOOP.
+      ENDLOOP.
+
+    ENDLOOP.
+*--- end of changes by Shashank ---
+
   ENDMETHOD.
 
 ENDCLASS.
